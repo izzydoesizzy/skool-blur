@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Skool Blur Settings</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 15px;
+        width: 250px;
+      }
+      h3 {
+        margin-top: 0;
+        font-size: 18px;
+        color: #333;
+      }
+      .slider-container {
+        margin: 10px 0;
+      }
+      input[type=range] {
+        width: 100%;
+      }
+      .links {
+        margin-top: 15px;
+        font-size: 14px;
+      }
+      .links a {
+        display: block;
+        margin: 4px 0;
+        color: #4357AD;
+        text-decoration: none;
+        font-weight: bold;
+      }
+      .links a:hover {
+        text-decoration: underline;
+      }
+      button {
+        margin-top: 10px;
+        padding: 6px 10px;
+        border: none;
+        background-color: #4357AD;
+        color: white;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      button:hover {
+        background-color: #2f3d7a;
+      }
+    </style>
+  </head>
+  <body>
+    <h3>Skool Blur Settings</h3>
+    <div class="slider-container">
+      <label for="blurRange">Blur Level:</label>
+      <input type="range" id="blurRange" min="0" max="20" step="1">
+      <span id="blurValue"></span>
+    </div>
+    <button id="toggleBlur">Toggle Blur</button>
+
+    <div class="links">
+      <a href="https://linkedin.com/in/izzydoesizzy" target="_blank">
+        Izzy Piyale-Sheard on LinkedIn
+      </a>
+      <a href="https://skool.com/mymagic/about" target="_blank">
+        Join MYM Community
+      </a>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
