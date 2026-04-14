@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Skool Blur Settings</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        width: 280px;
+        background: #f8f9fa;
+        color: #1a1a2e;
+      }
+
+      .header {
+        background: linear-gradient(135deg, #4357AD, #5a6fd6);
+        padding: 16px 18px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .header img {
+        width: 28px;
+        height: 28px;
+        border-radius: 6px;
+      }
+
+      .header h1 {
+        font-size: 15px;
+        font-weight: 600;
+        color: #fff;
+        letter-spacing: 0.3px;
+      }
+
+      .controls {
+        padding: 18px;
+      }
+
+      .blur-control {
+        margin-bottom: 16px;
+      }
+
+      .blur-label {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 8px;
+      }
+
+      .blur-label span {
+        font-size: 13px;
+        font-weight: 500;
+        color: #444;
+      }
+
+      .blur-label .blur-value {
+        font-size: 13px;
+        font-weight: 600;
+        color: #4357AD;
+        background: #eef0fb;
+        padding: 2px 8px;
+        border-radius: 10px;
+      }
+
+      input[type=range] {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 100%;
+        height: 6px;
+        border-radius: 3px;
+        background: #dde1e7;
+        outline: none;
+      }
+
+      input[type=range]::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: #4357AD;
+        cursor: pointer;
+        box-shadow: 0 1px 4px rgba(67, 87, 173, 0.4);
+        transition: transform 0.15s ease;
+      }
+
+      input[type=range]::-webkit-slider-thumb:hover {
+        transform: scale(1.15);
+      }
+
+      .toggle-btn {
+        width: 100%;
+        padding: 10px;
+        border: none;
+        border-radius: 8px;
+        font-size: 13px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s ease;
+      }
+
+      .toggle-btn.enabled {
+        background: #4357AD;
+        color: #fff;
+      }
+
+      .toggle-btn.enabled:hover {
+        background: #3748a0;
+      }
+
+      .toggle-btn.disabled {
+        background: #e8e8e8;
+        color: #666;
+      }
+
+      .toggle-btn.disabled:hover {
+        background: #ddd;
+      }
+
+      .status {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin-bottom: 14px;
+        font-size: 12px;
+        color: #666;
+      }
+
+      .status-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+      }
+
+      .status-dot.on {
+        background: #22c55e;
+        box-shadow: 0 0 6px rgba(34, 197, 94, 0.4);
+      }
+
+      .status-dot.off {
+        background: #aaa;
+      }
+
+      .divider {
+        height: 1px;
+        background: #e5e7eb;
+        margin: 0;
+      }
+
+      .footer {
+        padding: 14px 18px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+
+      .footer a {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 12px;
+        color: #555;
+        text-decoration: none;
+        transition: color 0.15s ease;
+      }
+
+      .footer a:hover {
+        color: #4357AD;
+      }
+
+      .footer .cta {
+        display: block;
+        text-align: center;
+        padding: 8px;
+        background: #4357AD;
+        color: #fff;
+        font-size: 12px;
+        font-weight: 600;
+        border-radius: 6px;
+        text-decoration: none;
+        transition: background 0.2s ease;
+        margin-top: 4px;
+      }
+
+      .footer .cta:hover {
+        background: #3748a0;
+        color: #fff;
+      }
+
+      .footer .cta-subtitle {
+        font-size: 10px;
+        font-weight: 400;
+        opacity: 0.85;
+        display: block;
+        margin-top: 2px;
+      }
+
+      .credit {
+        text-align: center;
+        font-size: 10px;
+        color: #aaa;
+        text-decoration: none;
+      }
+
+      .credit:hover {
+        color: #4357AD;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <img src="icon48.png" alt="Skool Blur">
+      <h1>Skool Blur</h1>
+    </div>
+
+    <div class="controls">
+      <div class="status">
+        <span class="status-dot" id="statusDot"></span>
+        <span id="statusText">Blur active</span>
+      </div>
+
+      <div class="blur-control">
+        <div class="blur-label">
+          <span>Blur intensity</span>
+          <span class="blur-value" id="blurValue">10px</span>
+        </div>
+        <input type="range" id="blurRange" min="0" max="20" step="1">
+      </div>
+
+      <button id="toggleBlur" class="toggle-btn enabled">Disable Blur</button>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="footer">
+      <a class="cta" href="https://www.skool.com/signup?ref=a8e71546cfbf435f8cd2b170d56ee534" target="_blank">
+        Try Skool Free for 14 Days
+        <span class="cta-subtitle">Build your own community</span>
+      </a>
+      <a class="credit" href="https://linkedin.com/in/izzydoesizzy" target="_blank">by Izzy Piyale-Sheard</a>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>
