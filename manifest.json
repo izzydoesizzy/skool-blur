@@ -2,11 +2,9 @@
   "manifest_version": 3,
   "name": "Skool Blur",
   "description": "Blur member names, profile photos, and @mentions on Skool for safe screen recordings.",
-  "version": "1.2",
+  "version": "1.1",
   "permissions": [
-    "storage",
-    "tabs",
-    "scripting"
+    "storage"
   ],
   "host_permissions": [
     "https://*.skool.com/*"
@@ -17,7 +15,7 @@
   "content_scripts": [
     {
       "matches": ["https://*.skool.com/*"],
-      "js": ["content.js"],
+      "js": ["blur-core.js", "content.js"],
       "run_at": "document_start"
     }
   ],
